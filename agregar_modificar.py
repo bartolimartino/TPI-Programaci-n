@@ -4,7 +4,6 @@ Materia: Programación 1 — UTN Tecnicatura Universitaria en Programación
 TPI: Gestión de Datos de Países en Python
 
 """
-from datos import cargar_paises
 
 CONTINENTES = ["América", "Europa", "Asia", "África", "Oceanía"]
 
@@ -134,8 +133,6 @@ def agregar_pais(lista_paises):
         print("\nOperación cancelada.")
         return False
 
-
-
 # Actualizar un país                                                              
 
 def modificar_pais(lista_paises):
@@ -195,7 +192,3 @@ def modificar_pais(lista_paises):
     except KeyboardInterrupt:
         print("\nOperación cancelada.")
         return False
-
-paises = cargar_paises("paises.csv")
-
-
