@@ -1,5 +1,6 @@
 import csv
-
+from datos import cargar_paises, guardar_paises
+from agregar_modificar import agregar_pais, modificar_pais
 
 def mostrar_menu():   
     while True:
@@ -31,7 +32,20 @@ def mostrar_menu():
 # Bloque principal
 # ==================
 
+archivo = "paises.csv" 
+paises = cargar_paises(archivo)
+
 while True:
    # Vamos añadiendo las opciones a medida que completemos
+    
     opcion = mostrar_menu()
-
+    if opcion == 1:
+        agregar_pais(paises)
+        guardar_paises(paises, archivo)
+    if opcion == 2:
+        modificar_pais(paises) 
+        guardar_paises(paises, archivo)
+    if opcion == 6:
+        # guardar_paises(archivo) ver si guardamos
+        print("Saliendo del programa, hasta pronto")
+        break
