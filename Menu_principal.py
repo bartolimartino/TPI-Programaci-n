@@ -1,6 +1,8 @@
 import csv
 from datos import cargar_paises, guardar_paises
 from agregar_modificar import agregar_pais, modificar_pais
+from Buscar_por_nombre import buscar_pais
+from busqueda_filtros import busqueda_filtros
 
 def mostrar_menu():   
     while True:
@@ -45,7 +47,13 @@ while True:
     if opcion == 2:
         modificar_pais(paises) 
         guardar_paises(paises, archivo)
-    if opcion == 6:
+    if opcion == 3:
+        buscar_pais(archivo)
+        guardar_paises(paises, archivo)
+    if opcion == 4:
+        busqueda_filtros(archivo)
+        guardar_paises(paises, archivo)
+
         # guardar_paises(archivo) ver si guardamos
         print("Saliendo del programa, hasta pronto")
         break
