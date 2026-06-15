@@ -3,6 +3,7 @@ from datos import cargar_paises, guardar_paises
 from agregar_modificar import agregar_pais, modificar_pais
 from Buscar_por_nombre import buscar_pais
 from busqueda_filtros import busqueda_filtros
+from ordenar import submenu_orden, ordenar_por_nombre, ordenar_por_poblacion, ordenar_por_superficie, mostrar_lista
 
 def mostrar_menu():   
     while True:
@@ -13,11 +14,12 @@ def mostrar_menu():
             print("3°) - Buscar un país por nombre")
             print("4°) - Buscar por filtro")
             print("5°) - Ordenar paises")
-            print("6°) - Salir")  
+            print("6°) - Estadisticas")
+            print("7°) - Salir")  
 
             eleccion = int(input("Ingrese una opción del menu: "))
 
-            if eleccion < 1 or eleccion > 6:
+            if eleccion < 1 or eleccion > 7:
                 print(
                     "\nError: Debe ingresar un numero dentro del rango de las opciones (1/6)"
                 )
@@ -38,22 +40,26 @@ archivo = "paises.csv"
 paises = cargar_paises(archivo)
 
 while True:
-   # Vamos añadiendo las opciones a medida que completemos
-    
-    opcion = mostrar_menu()
-    if opcion == 1:
-        agregar_pais(paises)
-        guardar_paises(paises, archivo)
-    if opcion == 2:
-        modificar_pais(paises) 
-        guardar_paises(paises, archivo)
-    if opcion == 3:
-        buscar_pais(archivo)
-        guardar_paises(paises, archivo)
-    if opcion == 4:
-        busqueda_filtros(archivo)
-        guardar_paises(paises, archivo)
-
-        # guardar_paises(archivo) ver si guardamos
-        print("Saliendo del programa, hasta pronto")
-        break
+    try:
+        opcion = mostrar_menu()
+        if opcion == 1:
+            agregar_pais(paises)
+            guardar_paises(paises, archivo)
+        if opcion == 2:
+            modificar_pais(paises) 
+            guardar_paises(paises, archivo)
+        if opcion == 3:
+            buscar_pais(archivo)
+        if opcion == 4:
+            busqueda_filtros(archivo)
+        if opcion == 5:
+            submenu_orden(paises)
+        if opcion == 6:
+            pass
+        if opcion == 7:
+            print("Saliendo del programa, hasta pronto")
+            break
+        else:
+            print("Opcion no validad intente nuevamente")
+    except Exception as e:
+        print("ERROR: Ocurrio un error inesperado:", type(e).__name__, {e})
