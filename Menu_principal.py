@@ -4,6 +4,7 @@ from agregar_modificar import agregar_pais, modificar_pais
 from Buscar_por_nombre import buscar_pais
 from busqueda_filtros import busqueda_filtros
 from ordenar import submenu_orden, ordenar_por_nombre, ordenar_por_poblacion, ordenar_por_superficie, mostrar_lista
+from estadisticas import realizar_estadisticas
 
 def mostrar_menu():   
     while True:
@@ -21,7 +22,7 @@ def mostrar_menu():
 
             if eleccion < 1 or eleccion > 7:
                 print(
-                    "\nError: Debe ingresar un numero dentro del rango de las opciones (1/6)"
+                    "\nError: Debe ingresar un numero dentro del rango de las opciones (1/7)"
                 )
                 continue
 
@@ -49,13 +50,13 @@ while True:
             modificar_pais(paises) 
             guardar_paises(paises, archivo)
         if opcion == 3:
-            buscar_pais(archivo)
+            buscar_pais(paises)
         if opcion == 4:
-            busqueda_filtros(archivo)
+            busqueda_filtros(paises)
         if opcion == 5:
             submenu_orden(paises)
         if opcion == 6:
-            pass
+            realizar_estadisticas(paises)
         if opcion == 7:
             print("Saliendo del programa, hasta pronto")
             break
