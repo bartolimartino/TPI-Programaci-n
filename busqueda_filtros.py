@@ -11,7 +11,7 @@ def eliminar_tildes(texto):
     )
     return texto
 
-def busqueda_filtros(archivo):
+def busqueda_filtros(lista_paises):
     while True:
         try:
             print("\n ---|Menú de filtros|---")
@@ -39,10 +39,7 @@ def busqueda_filtros(archivo):
 
                 encontrado = False
                 try:
-                    with open(archivo, mode="r", encoding="utf-8") as f:
-                        lector = csv.DictReader(f)
-
-                        for fila in lector:
+                        for fila in lista_paises:
                             if eliminar_tildes(fila["continente"]) == filtrar_continente:
 
                                 if not encontrado:
@@ -57,7 +54,7 @@ def busqueda_filtros(archivo):
                     
 
                 except FileNotFoundError:
-                    print(f"\nError: El archivo '{archivo}' no existe")
+                    print(f"\nError: El archivo no existe")
 
 
 
@@ -74,20 +71,17 @@ def busqueda_filtros(archivo):
                                   )
                             continue
                         encontrado = False
-                        with open(archivo, mode="r", encoding="utf-8") as f:
-                            lector = csv.DictReader(f)
 
-                            for fila in lector:
-                                poblacion_actual = int(fila["poblacion"])
+                        for fila in lista_paises:
+                            poblacion_actual = int(fila["poblacion"])
 
-                                if poblacion_minima <= poblacion_actual <= poblacion_maxima:
-                                    if not encontrado:
-                                        print("\n---| Países encontrados |---")
+                            if poblacion_minima <= poblacion_actual <= poblacion_maxima:
+                                if not encontrado:
+                                    print("\n---| Países encontrados |---")
 
-                                    print(f"Pais: {fila['nombre']} | Población: {fila['poblacion']} | Superficie: {fila['superficie']} km² | Continente: {fila['continente']}")
-                                    encontrado = True
+                                print(f"Pais: {fila['nombre']} | Población: {fila['poblacion']} | Superficie: {fila['superficie']} km² | Continente: {fila['continente']}")
+                                encontrado = True
                                     
-
                             if not encontrado:
                                 print("\n No se encontraron paises dentro de ese rango.")
                         break
@@ -110,18 +104,16 @@ def busqueda_filtros(archivo):
                             continue
 
                         encontrado = False
-                        with open(archivo, mode="r", encoding="utf-8") as f:
-                            lector = csv.DictReader(f)
+                        
+                        for fila in lista_paises:
+                            superficie_actual = int(fila["superficie"])
 
-                            for fila in lector:
-                                superficie_actual = int(fila["superficie"])
+                            if superficie_minima <= superficie_actual <= superficie_maxima:
+                                if not encontrado:
+                                    print("\n---| Países encontrados |---")
 
-                                if superficie_minima <= superficie_actual <= superficie_maxima:
-                                    if not encontrado:
-                                        print("\n---| Países encontrados |---")
-
-                                    print(f"Pais: {fila['nombre']} | Población: {fila['poblacion']} | Superficie: {fila['superficie']} km² | Continente: {fila['continente']}")
-                                    encontrado = True
+                                print(f"Pais: {fila['nombre']} | Población: {fila['poblacion']} | Superficie: {fila['superficie']} km² | Continente: {fila['continente']}")
+                                encontrado = True
                                     
                             if not encontrado:
                                 print("\n No se encontraron paises dentro de ese rango.")
