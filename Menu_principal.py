@@ -45,10 +45,8 @@ while True:
         opcion = mostrar_menu()
         if opcion == 1:
             agregar_pais(paises)
-            guardar_paises(paises, archivo)
         if opcion == 2:
             modificar_pais(paises) 
-            guardar_paises(paises, archivo)
         if opcion == 3:
             buscar_pais(paises)
         if opcion == 4:
@@ -58,6 +56,7 @@ while True:
         if opcion == 6:
             realizar_estadisticas(paises)
         if opcion == 7:
+            guardar_paises(paises, archivo)
             print("Saliendo del programa, hasta pronto")
             break
         else:
