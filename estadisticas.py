@@ -1,6 +1,6 @@
 import csv
 
-
+# Funcion base correspondiente a la opcion numero 6°, esta opcion muestra un menu interactivo de 5 sub-opciones que muestran distintas estadisticas en base al archivo principal.
 def realizar_estadisticas(lista_archivos):
      while True:
         try:
@@ -21,7 +21,7 @@ def realizar_estadisticas(lista_archivos):
             continue
 
         else:
-            
+            # Sub-opcion 1: muestra el pais con menor y mayor poblacion
             if sub_busqueda == 1:
                 print("\n--|Pais con menor y mayor poblacion|--")
 
@@ -32,6 +32,7 @@ def realizar_estadisticas(lista_archivos):
                 print(f"- Mayor población: {pais_mas_poblado['nombre']} ({pais_mas_poblado['poblacion']} hab.)")
                 print(f"- Menor población: {pais_menos_poblado['nombre']} ({pais_menos_poblado['poblacion']} hab.)")
             
+            # Sub-opcion 2: muestra un promedio de la poblacion de todos los paises del archivo
             elif sub_busqueda == 2:
                 print("\n--|Promedio de población|--")
 
@@ -43,18 +44,19 @@ def realizar_estadisticas(lista_archivos):
                 print("\n--|Resultados|--")
                 print(f" El promedio total de la población es: {promedio_poblacion}")
 
-            
+            # Sub-opcion 3: muestra el promedio de la superficie de todos los paises del archivo
             elif sub_busqueda == 3:
                 print("\n--|Promedio de superficie|--")
 
                 superficie_total = sum(int(pais['superficie']) for pais in lista_archivos)
                 cantidad_paises = len(lista_archivos)
 
-                promedio_superficie = superficie_total / cantidad_paises
+                promedio_superficie = superficie_total // cantidad_paises
 
                 print("\n--|Resultados|--")
                 print(f"El promedio de la superficie total es: {promedio_superficie} km²")
 
+            # Sub-opcion 4: Filtra todos los paises por sus respectivos continentes
             elif sub_busqueda == 4:
                 conteo = {}
                 for pais in lista_archivos: 
