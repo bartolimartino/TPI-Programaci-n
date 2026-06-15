@@ -1,5 +1,5 @@
 import csv
-
+#  Funcion encargada de limpiar espacios vacios, tildes y mayusculas.
 def eliminar_tildes(texto):
     texto = texto.lower().replace(" ", "")
     texto = (
@@ -11,6 +11,7 @@ def eliminar_tildes(texto):
     )
     return texto
 
+# Funcion base de la opcion numero 4°, se despliega un sub-menu con 4 opciones que permite realizar busquedas por medio de filtros. 
 def busqueda_filtros(lista_paises):
     while True:
         try:
@@ -33,32 +34,47 @@ def busqueda_filtros(lista_paises):
             
                # ---- Desarrollo de la primera 1° subopcion -----
 
+            # Sub-opcion 1: se muestran los paises del continente ingresado
+
             if sub_busqueda == 1:
-                print("\n--|Busqueda por continente|--")
-                filtrar_continente = eliminar_tildes(input("-Ingrese un continente para filtrar: ").replace(" ", "").lower())
-
-                encontrado = False
-                try:
-                        for fila in lista_paises:
-                            if eliminar_tildes(fila["continente"]) == filtrar_continente:
-
-                                if not encontrado:
-                                    print("\n---| Paises filtrados |---")
-
-                                print(f"Pais: {fila['nombre']} | Poblacion: {fila['poblacion']} | Superficie: {fila['superficie']} km²")
-                                encontrado = True
-                                
-
-                        if not encontrado:
-                            print("\n No se encontraron paises en ese continente")
+                while True:
+                    print("\n--| Busqueda por continente |--")
+                    print("-Continentes: América | África | Europa | Asia | Oceanía")
                     
-
-                except FileNotFoundError:
-                    print(f"\nError: El archivo no existe")
-
+                    filtrar_continente = input("-Ingrese un continente para filtrar: ")
+                    
+                    if filtrar_continente.strip() == "":
+                        print("Error: El campo no puede estar vacío.")
+                        continue
+                    
+                    continentes_validos = ["america", "africa", "europa", "asia", "oceania"]
+                    busqueda_limpia = eliminar_tildes(filtrar_continente.lower().strip())
+                    
+                    if busqueda_limpia not in continentes_validos:
+                        print("Error: Ingrese un continente correcto")
+                        continue
+                    
+                    encontrado = False
+                    for fila in lista_paises:
+                        continente_fila = eliminar_tildes(fila["continente"].lower().strip())
+                        
+                        if continente_fila == busqueda_limpia:
+                            if not encontrado:
+                                print("\n---| Paises filtrados |---")
+                            
+                            print(f"Pais: {fila['nombre']} | Poblacion: {fila['poblacion']} | Superficie: {fila['superficie']} km2")
+                            encontrado = True
+                    
+                    if not encontrado:
+                        print("\nNo se encontraron paises en ese continente")
+                    
+                    break
 
 
                 # ---- Desarrollo de la segunda 2° subopcion -----
+
+                # Sub-opcion 2: Se buscan paises por medio de los rangos de poblacion minima/maxima.
+
             elif sub_busqueda == 2:
                 print("\n--|Busqueda por rango de población|--")
                 while True:
@@ -82,8 +98,8 @@ def busqueda_filtros(lista_paises):
                                 print(f"Pais: {fila['nombre']} | Población: {fila['poblacion']} | Superficie: {fila['superficie']} km² | Continente: {fila['continente']}")
                                 encontrado = True
                                     
-                            if not encontrado:
-                                print("\n No se encontraron paises dentro de ese rango.")
+                        if not encontrado:
+                            print("\n No se encontraron paises dentro de ese rango.")
                         break
 
                     except ValueError:
@@ -91,6 +107,9 @@ def busqueda_filtros(lista_paises):
                         continue
 
                         # ---- Desarrollo de la tercera 3° subopcion -----
+
+                        # Sub-opcion 3: se muestran los paises por medio de un rango de superficie minima/maxima 
+
             elif sub_busqueda == 3:
                 print("\n--|Busqueda por rango de superficie|--")
                 while True:
@@ -115,15 +134,15 @@ def busqueda_filtros(lista_paises):
                                 print(f"Pais: {fila['nombre']} | Población: {fila['poblacion']} | Superficie: {fila['superficie']} km² | Continente: {fila['continente']}")
                                 encontrado = True
                                     
-                            if not encontrado:
-                                print("\n No se encontraron paises dentro de ese rango.")
+                        if not encontrado:
+                            print("\n No se encontraron paises dentro de ese rango.")
 
                         break
 
                     except ValueError:
                         print("Error: Debes ingresar números enteros, Intenta de nuevo.")
                         continue
-
+            # sub-opcion 4: vuelve al menu principal
             elif sub_busqueda == 4:
                 return
 
