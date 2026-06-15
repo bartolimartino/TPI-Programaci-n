@@ -60,7 +60,6 @@ while True:
         if opcion == 7:
             print("Saliendo del programa, hasta pronto")
             break
-        else:
-            print("Opcion no validad intente nuevamente")
+
     except Exception as e:
         print("ERROR: Ocurrio un error inesperado:", type(e).__name__, {e})
