@@ -59,7 +59,6 @@ while True:
             guardar_paises(paises, archivo)
             print("Saliendo del programa, hasta pronto")
             break
-        else:
-            print("Opcion no validad intente nuevamente")
+
     except Exception as e:
         print("ERROR: Ocurrio un error inesperado:", type(e).__name__, {e})
