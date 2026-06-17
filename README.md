@@ -174,7 +174,7 @@ Brasil,215313000,8515767,América
 ## Links
 
 - **Video demostrativo:** https://youtu.be/B2aIC-7Viqo
-- **Documentación PDF:** [COMPLETAR — pegar aquí el link al PDF una vez subido al repositorio]
+- **Documentación PDF:** https://github.com/bartolimartino/TPI-Programaci-n/blob/Rama-Martino/Informe_TPI_Programacion1.pdf
 
 ---
 
